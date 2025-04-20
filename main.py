@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, session, jsonify
 import requests
 from stravalib.client import Client
@@ -47,19 +46,19 @@ def mes_aliments():
         nom = request.form.get('nom')
         marque = request.form.get('marque')
         calories = request.form.get('calories')
-        
+
         conn = sqlite3.connect('aliments.db')
         c = conn.cursor()
         c.execute("INSERT INTO aliments VALUES (?, ?, ?)", (nom, marque, calories))
         conn.commit()
         conn.close()
-        
+
     conn = sqlite3.connect('aliments.db')
     c = conn.cursor()
     c.execute("SELECT * FROM aliments")
     aliments = c.fetchall()
     conn.close()
-    
+
     return f"""
     <!DOCTYPE html>
     <html>
@@ -119,7 +118,7 @@ def recherche_aliments():
             results = f"<div class='results'><h2>Résultats pour '{query}':</h2>{products_list}</div>"
         else:
             results = "<div class='results'>Aucun résultat trouvé</div>"
-    
+
     return f"""
     <!DOCTYPE html>
     <html>
@@ -136,6 +135,45 @@ def recherche_aliments():
             <button type="submit">Rechercher</button>
         </form>
         {results}
+    </body>
+    </html>
+    """
+
+@app.route('/strava_auth')
+def strava_auth():
+    client = Client()
+    authorize_url = client.authorization_url(
+        client_id=os.environ.get('STRAVA_CLIENT_ID'),
+        redirect_uri='http://localhost:5000/strava_callback',
+        scope=['read_all', 'profile:read_all', 'activity:read_all']
+    )
+    return redirect(authorize_url)
+
+@app.route('/strava_callback')
+def strava_callback():
+    code = request.args.get('code')
+    client = Client()
+    token_response = client.exchange_code_for_token(
+        client_id=os.environ.get('STRAVA_CLIENT_ID'),
+        client_secret=os.environ.get('STRAVA_CLIENT_SECRET'),
+        code=code
+    )
+
+    client.access_token = token_response['access_token']
+    athlete = client.get_athlete()
+
+    return f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Strava Connecté</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>Connecté à Strava</h1>
+        <p>Bienvenue {athlete.firstname} {athlete.lastname}!</p>
+        <p>Email: {athlete.email}</p>
+        <a href="/">Retour à l'accueil</a>
     </body>
     </html>
     """

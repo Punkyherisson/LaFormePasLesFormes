@@ -1,8 +1,20 @@
 
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import requests
 from stravalib.client import Client
 import openfoodfacts
+import sqlite3
+import os
+
+def init_db():
+    conn = sqlite3.connect('aliments.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS aliments
+                 (nom TEXT, marque TEXT, calories INTEGER)''')
+    conn.commit()
+    conn.close()
+
+init_db()
 
 app = Flask(__name__)
 app.secret_key = 'votre_clé_secrète'  # À changer en production
@@ -22,11 +34,67 @@ def index():
         <h1>Mon Suivi Santé</h1>
         <div class="nav-links">
             <a href="/aliments">Rechercher un aliment</a>
+            <a href="/mes-aliments">Mes aliments fréquents</a>
             <a href="/strava_auth">Connecter Strava</a>
         </div>
     </body>
     </html>
     """
+
+@app.route('/mes-aliments', methods=['GET', 'POST'])
+def mes_aliments():
+    if request.method == 'POST':
+        nom = request.form.get('nom')
+        marque = request.form.get('marque')
+        calories = request.form.get('calories')
+        
+        conn = sqlite3.connect('aliments.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO aliments VALUES (?, ?, ?)", (nom, marque, calories))
+        conn.commit()
+        conn.close()
+        
+    conn = sqlite3.connect('aliments.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM aliments")
+    aliments = c.fetchall()
+    conn.close()
+    
+    return f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mes Aliments</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>Mes Aliments Fréquents</h1>
+        <form method="POST">
+            <input type="text" name="nom" placeholder="Nom de l'aliment" required>
+            <input type="text" name="marque" placeholder="Marque">
+            <input type="number" name="calories" placeholder="Calories/100g" required>
+            <button type="submit">Ajouter</button>
+        </form>
+        <div class="results">
+            {generate_aliments_html(aliments)}
+        </div>
+    </body>
+    </html>
+    """
+
+def generate_aliments_html(aliments):
+    html = "<div class='mes-aliments'>"
+    for aliment in aliments:
+        html += f"""
+            <div class='product'>
+                <h3>{aliment[0]}</h3>
+                <p>Marque: {aliment[1]}</p>
+                <p>Calories: {aliment[2]} kcal/100g</p>
+            </div>
+        """
+    return html + "</div>"
 
 @app.route('/aliments', methods=['GET', 'POST'])
 def recherche_aliments():

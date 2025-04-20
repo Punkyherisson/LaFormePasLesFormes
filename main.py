@@ -144,7 +144,7 @@ def strava_auth():
     client = Client()
     authorize_url = client.authorization_url(
         client_id=os.environ.get('STRAVA_CLIENT_ID'),
-        redirect_uri='https://' + os.environ.get('REPL_SLUG', '') + '.repl.co/strava_callback',
+        redirect_uri='https://LaFormePasLesFormes.repl.co/strava_callback',
         scope=['read_all', 'profile:read_all', 'activity:read_all']
     )
     return redirect(authorize_url)

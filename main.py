@@ -33,8 +33,16 @@ def recherche_aliments():
     results = ""
     if request.method == 'POST':
         query = request.form.get('query')
-        products = openfoodfacts.products.search(query)
-        results = f"<div class='results'>Résultats pour {query}: {products}</div>"
+        search_result = openfoodfacts.API().search(query)
+        if search_result and 'products' in search_result:
+            products_list = ""
+            for product in search_result['products'][:5]:
+                name = product.get('product_name', 'Sans nom')
+                brand = product.get('brands', 'Marque inconnue')
+                products_list += f"<div class='product'><h3>{name}</h3><p>Marque: {brand}</p></div>"
+            results = f"<div class='results'><h2>Résultats pour '{query}':</h2>{products_list}</div>"
+        else:
+            results = "<div class='results'>Aucun résultat trouvé</div>"
     
     return f"""
     <!DOCTYPE html>

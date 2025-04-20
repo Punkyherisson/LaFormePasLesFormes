@@ -79,6 +79,7 @@ def mes_aliments():
         <div class="results">
             {generate_aliments_html(aliments)}
         </div>
+        <a href="/" class="nav-links">Retour au menu</a>
     </body>
     </html>
     """

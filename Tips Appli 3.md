@@ -1,4 +1,4 @@
-Tips Appli3
+Tips Appli 3
 Boire de l'eau est bon pour la santé.
 1.5 L d'eau par jour
 Apprendre les bases de la nutrition

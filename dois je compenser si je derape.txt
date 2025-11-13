@@ -3,4 +3,4 @@ exemple j'ai mangé un croissant je ne dois pas manger de dessert ce midi
 j'ai bu une biere, je dois sauter mon diner 
 ratrapper est une bonne idee si cela ne va pas a l'encontre du remplissage des cercles (journee equilibree)
 cas1: votre journee est equilibree.. vous n'avez pas depasse les cercles ... essayez de prendre un repas plus leger
-cas2: vous avez vraiment deconne c''est pas rattrapable
+cas2: vous avez vraiment deconne c''est pas rattrapablee, essayez de replir les cercles non remplis

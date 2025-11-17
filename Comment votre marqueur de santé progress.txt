@@ -1,0 +1,6 @@
+Comment votre marqueur de santé progresse
+Sommeil ? (noter de 1 à 5)
+Energie?    (noter de 1 à 5)
+Humeur ?    (noter de 1 à 5)
+Regarder si les notes s'ameliorent ou stagnent
+si stagnation : c'est normal ca prend un peu de temps et pas forcement visibles

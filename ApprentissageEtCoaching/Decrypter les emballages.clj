@@ -1,5 +1,5 @@
-Decrypter les emballages
-Savoir decrypter les etiquettes permet deviter de faire des erreurs alimentaires
+Decrypter les emballages.
+Savoir decrypter les etiquettes permet d'éviter de faire des erreurs alimentaires
 Grace a ce cours vous aller pouvoir verifier vos connaissances et en acquerir de nouvelles
 La liste des ingredients est la seule information obligatoire
 Que dois je regarder ?

@@ -1,0 +1,4 @@
+Autoevaluation vba
+faire un programme vba avec l'autoevaluation quotidienne
+comment se passe la journee
+...

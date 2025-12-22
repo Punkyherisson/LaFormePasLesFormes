@@ -2,6 +2,7 @@
 
 # ca yest je me souviens j'ai fait ca hier car j'ai eu un pb similaire Tu as (volontairement ou non) utilisé une date forcée via git commit --date ou les variables GIT_AUTHOR_DATE / GIT_COMMITTER_DATE (moins probable si tu ne l’as jamais fait).
 
+
 Oui, c’est exactement ça : en forçant la date hier, tu as “programmé” ton commit pour le 17 décembre, et la commande d’aujourd’hui a juste réutilisé cette date forcée.[^1][^2]
 
 ## Ce qui s’est passé

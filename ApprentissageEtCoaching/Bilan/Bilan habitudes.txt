@@ -1,0 +1,7 @@
+Bilan habitudes
+Quelle habitude avez vous choisi de suivre ?
+Je ne me rappelle plus
+Bien composer son alimentation
+Arreter de grignoter
+il faut checkert si elle a été cochée
+et si c'est pas le cas, il faut refaire un essai

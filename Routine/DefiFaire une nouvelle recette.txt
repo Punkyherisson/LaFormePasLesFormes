@@ -1,0 +1,7 @@
+Faire une nouvelle recette
+Regarder la base de données
+chercher des ingredients sains
+cuisiner avec cet aliment
+faire une recette jamais faite
+choisir une recette d'un pays a visiter
+prendre une recette connue et modifier deux ingredients

@@ -1,7 +1,7 @@
 Definir Objectif Principal
 Perdre X kilos dans X Semaines
 Pour arriver à cela, il est important de suivre un parcours où on apprend :
-- Les bases de la nutrition
+- Les bases de la nutrition et manger plus sainement
 - Les bases de la motivation
 - Les bases de la gestion des routines
 - Les bases de la planification et du controle

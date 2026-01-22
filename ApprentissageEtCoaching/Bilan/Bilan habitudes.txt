@@ -1,7 +1,17 @@
 Bilan habitudes
 Quelle habitude avez vous choisi de suivre ?
 Je ne me rappelle plus
+
+Decision courses et cuisine
 Bien composer son alimentation
 Arreter de grignoter
+
 il faut checkert si elle a été cochée
 et si c'est pas le cas, il faut refaire un essai
+L'integrer au planning quotidien de suivi
+On devrait normalemeent avoir juste des 1 et pas de 0
+On considere qu'une habitude est acquise si elle se fait regulierement.
+a part exception, ne devrait pas se produire.
+
+Si on a un doute, sur l'application ou si on voit trop de zero sur l'habitude, 
+il faut retravailert dessus et l'adapter et se concentrer dessus.

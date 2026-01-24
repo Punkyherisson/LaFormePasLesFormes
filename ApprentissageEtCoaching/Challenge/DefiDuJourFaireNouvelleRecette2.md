@@ -6,3 +6,6 @@ le defi peut etre :
 - cuisiner avec un nouvel aliment
 - choisir une recette jamais faite
 - modifier un ingredient ou deux d'une recette
+ajouter des recettes et chercher sites de recettes 
+pour eviter la repetition et l'ennui
+
